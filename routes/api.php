@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\ApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/auth', [ApiController::class, 'auth'])->name('getToken');
+Route::get('/departamentos', [ApiController::class, 'departamentos'])->name('getDepts');
+Route::get('/ciudades/{idDept}', [ApiController::class, 'ciudades'])->name('getCities');
